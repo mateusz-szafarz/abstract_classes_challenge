@@ -2,11 +2,11 @@ package com.mateuszszafarz;
 
 
 public abstract class LinkedListItem implements Comparable<LinkedListItem> {
-    protected LinkedListItem previous;
-    protected LinkedListItem next;
-    protected String value;
+    LinkedListItem previous;
+    LinkedListItem next;
+    String value;
 
-    public LinkedListItem(String value) {
+    LinkedListItem(String value) {
         this.value = value;
     }
 
@@ -16,9 +16,9 @@ public abstract class LinkedListItem implements Comparable<LinkedListItem> {
 
     public abstract String getValue();
 
-    public abstract void setPrevious(LinkedListItem previous);
+    public abstract LinkedListItem setPrevious(LinkedListItem previous);
 
-    public abstract void setNext(LinkedListItem next);
+    public abstract LinkedListItem setNext(LinkedListItem next);
 
     public abstract void setValue(String value);
 

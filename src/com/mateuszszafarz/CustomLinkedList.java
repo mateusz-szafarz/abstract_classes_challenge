@@ -1,7 +1,7 @@
 package com.mateuszszafarz;
 
 public class CustomLinkedList {
-    LinkedListItem head;
+    private LinkedListItem head;
 
     public void printList() {
         if (this.head == null) {
@@ -9,12 +9,9 @@ public class CustomLinkedList {
             return;
         }
         LinkedListItem currentItem = this.head;
-        while(true) {
+        while(currentItem != null) {
             System.out.println(currentItem.getValue());
             currentItem = currentItem.getNext();
-            if (currentItem == null) {
-                break;
-            }
         }
         System.out.println();
     }
@@ -28,21 +25,16 @@ public class CustomLinkedList {
                 if (insertedItem.compareTo(currentItem) < 0) {
                     if (currentItem.compareTo(head) == 0) {
                         this.head = insertedItem;
-                        String a = insertedItem.value;
-                        insertedItem.setNext(currentItem);
-                        currentItem.setPrevious(insertedItem);
+                        insertedItem.setNext(currentItem).setPrevious(insertedItem);
                         break;
                     } else {
                         LinkedListItem previousItem = currentItem.getPrevious();
-                        previousItem.setNext(insertedItem);
-                        insertedItem.setPrevious(previousItem);
-                        currentItem.setPrevious(insertedItem);
-                        insertedItem.setNext(currentItem);
+                        previousItem.setNext(insertedItem).setPrevious(previousItem);
+                        currentItem.setPrevious(insertedItem).setNext(currentItem);
                         break;
                     }
                 } else if (currentItem.getNext() == null) {
-                    currentItem.setNext(insertedItem);
-                    insertedItem.setPrevious(currentItem);
+                    currentItem.setNext(insertedItem).setPrevious(currentItem);
                     break;
                 }
                 currentItem = currentItem.getNext();
