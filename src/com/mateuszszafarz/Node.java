@@ -1,17 +1,17 @@
 package com.mateuszszafarz;
 
-public class DefaultItem extends LinkedListItem {
-    DefaultItem(String value) {
+public class Node extends Item {
+    Node(String value) {
         super(value);
     }
 
     @Override
-    public LinkedListItem getPrevious() {
+    public Item getPrevious() {
         return previous;
     }
 
     @Override
-    public LinkedListItem getNext() {
+    public Item getNext() {
         return next;
     }
 
@@ -21,13 +21,13 @@ public class DefaultItem extends LinkedListItem {
     }
 
     @Override
-    public LinkedListItem setPrevious(LinkedListItem previous) {
+    public Item setPrevious(Item previous) {
         this.previous = previous;
         return this.previous;
     }
 
     @Override
-    public LinkedListItem setNext(LinkedListItem next) {
+    public Item setNext(Item next) {
         this.next = next;
         return this.next;
     }

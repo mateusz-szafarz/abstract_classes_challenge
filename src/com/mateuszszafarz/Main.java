@@ -27,12 +27,12 @@ public class Main {
                 case 3:
                     System.out.println("Enter item to add:");
                     String valueToAdd = scanner.nextLine().trim();
-                    list.addItem(new DefaultItem(valueToAdd));
+                    list.addItem(new Node(valueToAdd));
                     break;
                 case 4:
                     System.out.println("Enter item to remove:");
                     String valueToRemove = scanner.nextLine().trim();
-                    list.removeItem(new DefaultItem(valueToRemove));
+                    list.removeItem(new Node(valueToRemove));
                     break;
             }
         }
