@@ -11,7 +11,7 @@ public class CustomLinkedList {
         Item currentItem = this.head;
         while(currentItem != null) {
             System.out.println(currentItem.getValue());
-            currentItem = currentItem.getNext();
+            currentItem = currentItem.getRight();
         }
         System.out.println();
     }
@@ -25,19 +25,19 @@ public class CustomLinkedList {
                 if (insertedItem.compareTo(currentItem) < 0) {
                     if (currentItem.compareTo(head) == 0) {
                         this.head = insertedItem;
-                        insertedItem.setNext(currentItem).setPrevious(insertedItem);
+                        insertedItem.setRight(currentItem).setLeft(insertedItem);
                         break;
                     } else {
-                        Item previousItem = currentItem.getPrevious();
-                        previousItem.setNext(insertedItem).setPrevious(previousItem);
-                        currentItem.setPrevious(insertedItem).setNext(currentItem);
+                        Item previousItem = currentItem.getLeft();
+                        previousItem.setRight(insertedItem).setLeft(previousItem);
+                        currentItem.setLeft(insertedItem).setRight(currentItem);
                         break;
                     }
-                } else if (currentItem.getNext() == null) {
-                    currentItem.setNext(insertedItem).setPrevious(currentItem);
+                } else if (currentItem.getRight() == null) {
+                    currentItem.setRight(insertedItem).setLeft(currentItem);
                     break;
                 }
-                currentItem = currentItem.getNext();
+                currentItem = currentItem.getRight();
             }
         }
     }
@@ -51,28 +51,28 @@ public class CustomLinkedList {
         while (true) {
             if (currentItem.compareTo(removedItem) == 0) {
                 if (removedItem.compareTo(this.head) == 0) {
-                    if (this.head.getNext() != null) {
-                        this.head = this.head.getNext();
-                        this.head.setPrevious(null);
+                    if (this.head.getRight() != null) {
+                        this.head = this.head.getRight();
+                        this.head.setLeft(null);
                     } else {
                         this.head = null;
                     }
                     return true;
                 }
-                Item previous = currentItem.getPrevious();
-                Item next = currentItem.getNext();
+                Item previous = currentItem.getLeft();
+                Item next = currentItem.getRight();
                 if (next != null) {
-                    previous.setNext(next);
-                    next.setPrevious(previous);
+                    previous.setRight(next);
+                    next.setLeft(previous);
                 } else {
-                    previous.setNext(null);
+                    previous.setRight(null);
                 }
                 return true;
-            } else if (currentItem.getNext() == null) {
+            } else if (currentItem.getRight() == null) {
                 System.out.println("item: " + removedItem.getValue() + " not found inside list");
                 return false;
             }
-            currentItem = currentItem.getNext();
+            currentItem = currentItem.getRight();
         }
     }
 }

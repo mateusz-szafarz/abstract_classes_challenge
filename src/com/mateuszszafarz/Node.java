@@ -6,13 +6,13 @@ public class Node extends Item {
     }
 
     @Override
-    public Item getPrevious() {
-        return previous;
+    public Item getLeft() {
+        return left;
     }
 
     @Override
-    public Item getNext() {
-        return next;
+    public Item getRight() {
+        return right;
     }
 
     @Override
@@ -21,15 +21,15 @@ public class Node extends Item {
     }
 
     @Override
-    public Item setPrevious(Item previous) {
-        this.previous = previous;
-        return this.previous;
+    public Item setLeft(Item left) {
+        this.left = left;
+        return this.left;
     }
 
     @Override
-    public Item setNext(Item next) {
-        this.next = next;
-        return this.next;
+    public Item setRight(Item right) {
+        this.right = right;
+        return this.right;
     }
 
     @Override
