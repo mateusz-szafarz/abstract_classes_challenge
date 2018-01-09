@@ -56,15 +56,32 @@ public class BinarySearchTree {
         }
 
         // removed item found
-        if (subRoot.right != null) {
-            return subRoot.right;
+
+        if (subRoot.left == null && subRoot.right == null) { // removed item is a leaf
+            return null;
         }
 
-        if (subRoot.left != null) {
+        if (subRoot.right == null) { // removed item has only left child
             return subRoot.left;
         }
 
-        return null;
+        if (subRoot.left == null) { // removed item has only right child
+            return subRoot.right;
+        }
+
+        // removed item has both children
+        Item minItemInRightSubTree = findMin(subRoot.right);
+        subRoot.setValue(minItemInRightSubTree.getValue());
+        subRoot.setRight(removeItem(subRoot.getRight(), minItemInRightSubTree));
+        return subRoot;
+    }
+
+    private Item findMin(Item subRoot) {
+        if (subRoot.getLeft() != null) {
+            return findMin(subRoot.getLeft());
+        }
+
+        return subRoot;
     }
 
     public void traverse() {
